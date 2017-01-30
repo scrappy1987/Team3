@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Calendar;
 
 @Entity
-public class Showings {
+public class Showing {
 
 	@Id
 	@GeneratedValue
@@ -23,14 +23,28 @@ public class Showings {
 	private int filmID;
 	
 	@NotNull
-	private Date StartTime;
+	private Date startTime;
 	
 	@NotNull
 	private int screenID;
 	
 	@NotNull
 	private String showingLanguage;
+	
 
+
+	Showing(){}
+	
+	Showing(int showingID, int filmID, Date startTime, int screenID, String showingLanguage){
+		setShowingID(showingID);
+		setFilmID(filmID);
+		setStartTime(startTime);
+		setScreenID(screenID);
+		setShowingLanguage(showingLanguage);
+		
+	}
+	
+	
 	public int getShowingID() {
 		return showingID;
 	}
@@ -48,21 +62,14 @@ public class Showings {
 	}
 
 	public Date getStartTime() {
-		return StartTime;
-	}
-
-	public void setStartTime(Date StartTime) {
-		this.StartTime = StartTime;
-		
-	}
-	/*public Time getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(Time startTime) {
+	public void setStartTime(Date startTime) {
 		this.startTime = startTime;
+		
 	}
-	*/
+
 
 	public int getScreenID() {
 		return screenID;
@@ -80,10 +87,7 @@ public class Showings {
 		this.showingLanguage = showingLanguage;
 	}
 	
-	//public static void main(String[] args){
-		//Date newDate = new GregorianCalendar(2017, 2, 13 ,1 , 0).getTime();
-		//System.out.println(newDate);
-	//}
+
 	
 	
 	
