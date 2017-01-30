@@ -8,9 +8,11 @@
  * Each rating will have a ratingID, a ratingTitle and a 
  * ratingDescription.
  */
-
 package com.qa.cinema;
 
+import javax.persistence.*;
+
+@Entity
 public class CertRating {
 
 	// variables
@@ -19,6 +21,13 @@ public class CertRating {
 	private String ratingDescription;
 	
 	
+	public CertRating(int ratingID, String ratingTitle, String ratingDescription) {
+		this.ratingID = ratingID;
+		this.ratingTitle = ratingTitle;
+		this.ratingDescription = ratingDescription;
+	}
+	
+
 	// getters and setters
 	public int getRatingID() {
 		return ratingID;
