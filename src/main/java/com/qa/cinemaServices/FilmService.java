@@ -29,8 +29,8 @@ public class FilmService {
 		return film;
 	}
 
-	public void removeFilm(Long id) {
-		Film film = em.find(Film.class, id);
+	public void removeFilm(Long filmID) {
+		Film film = em.find(Film.class, filmID);
 		if (film != null)
 			em.remove(film);
 	}
