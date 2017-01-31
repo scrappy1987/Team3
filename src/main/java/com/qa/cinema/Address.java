@@ -2,6 +2,8 @@ package com.qa.cinema;
 
 import javax.persistence.*;
 
+// Author : Jack Roden
+
 @Entity
 public class Address {
 	protected String line1;
