@@ -13,30 +13,26 @@ package com.qa.cinema;
 import javax.persistence.*;
 
 @Entity
+@Table(name="CERT_RATING")
 public class CertRating {
 
 	// variables
-	private int ratingID;
+	@Id
+	@Column(name="RATING_TITLE")
 	private String ratingTitle;
+	
+	@Column(name="RATING_DESCRIPTION")
 	private String ratingDescription;
 	
 	
-	public CertRating(int ratingID, String ratingTitle, String ratingDescription) {
-		this.ratingID = ratingID;
+	
+	public CertRating(String ratingTitle, String ratingDescription) {
 		this.ratingTitle = ratingTitle;
 		this.ratingDescription = ratingDescription;
 	}
 	
 
 	// getters and setters
-	public int getRatingID() {
-		return ratingID;
-	}
-	
-	public void setRatingID(int ratingID) {
-		this.ratingID = ratingID;
-	}
-	
 	public String getRatingTitle() {
 		return ratingTitle;
 	}
