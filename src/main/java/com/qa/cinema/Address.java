@@ -1,37 +1,41 @@
 package com.qa.cinema;
 
+import javax.persistence.*;
+
+@Entity
 public class Address {
-	protected String addressLine1;
-	protected String addressLine2;
+	protected String line1;
+	protected String line2;
 	protected String county;
 	protected String country;
-	protected String postalCode;
+	protected String postCode;
 
 	public Address() {}
-	public Address(String addressLine1, String addressLine2, String county, String country, String postalCode) {
-		setAddressLine1(addressLine1);
-		setAddressLine2(addressLine2);
+	public Address(String line1, String line2, String county, String country, String postCode) {
+		setLine1(line1);
+		setLine2(line2);
 		setCounty(county);
 		setCountry(country);
-		setPostalCode(postalCode);
+		setPostCode(postCode);
 	}
 
-	public String getAddressLine1() {
-		return addressLine1;
+	@Column(name="address_line1")
+	public String getLine1() {
+		return line1;
 	}
 
-	public void setAddressLine1(String addressLine1) {
-		this.addressLine1 = addressLine1;
+	public void setLine1(String line1) {
+		this.line1 = line1;
+	}
+	@Column(name="address_line2")
+	public String getLine2() {
+		return line2;
 	}
 
-	public String getAddressLine2() {
-		return addressLine2;
+	public void setLine2(String line2) {
+		this.line2 = line2;
 	}
-
-	public void setAddressLine2(String addressLine2) {
-		this.addressLine2 = addressLine2;
-	}
-
+	@Column(name="address_county")
 	public String getCounty() {
 		return county;
 	}
@@ -39,7 +43,7 @@ public class Address {
 	public void setCounty(String county) {
 		this.county = county;
 	}
-
+	@Column(name="address_country")
 	public String getCountry() {
 		return country;
 	}
@@ -47,20 +51,20 @@ public class Address {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-
-	public String getPostalCode() {
-		return postalCode;
+	@Column(name="address_postcode")
+	public String getPostCode() {
+		return postCode;
 	}
 
-	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
+	public void setPostCode(String postalCode) {
+		this.postCode = postalCode;
 	}
 	
 	public String getAddress(){
 		StringBuilder STR = new StringBuilder();
 		STR.append(
-			getAddressLine1() + "\n" + getAddressLine2() +
-			getCounty() + "\n" + getCountry() + "\n" + getPostalCode()
+			getLine1() + "\n" + getLine2() +
+			getCounty() + "\n" + getCountry() + "\n" + getPostCode()
 		);
 		
 		return STR.toString();
