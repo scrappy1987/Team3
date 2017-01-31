@@ -17,7 +17,6 @@ import com.qa.cinema.ListAll;
 
 public class CertRatingServices {
 	
-	
 	@Inject
 	private EntityManager entitymanager;
 	
