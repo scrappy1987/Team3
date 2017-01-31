@@ -11,6 +11,7 @@
 package com.qa.cinema;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="CERT_RATING")
@@ -18,13 +19,16 @@ public class CertRating {
 
 	// variables
 	@Id
+	@NotNull
 	@Column(name="RATING_TITLE")
 	private String ratingTitle;
 	
+	@NotNull
 	@Column(name="RATING_DESCRIPTION")
 	private String ratingDescription;
 	
-	
+	public CertRating() {
+	}
 	
 	public CertRating(String ratingTitle, String ratingDescription) {
 		this.ratingTitle = ratingTitle;
