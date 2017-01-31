@@ -4,17 +4,21 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name="Actor")
 public class Actor {
 	
 	@Id
 	@GeneratedValue
 	protected long actor_id;
 	
+	@NotNull
 	@Column(name="actor_name", length=100)
 	protected String actor_name;
-
+	
 	public Actor(long actor_id, String actor_name) {
 		super();
 		this.actor_id = actor_id;
