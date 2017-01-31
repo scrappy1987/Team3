@@ -32,5 +32,6 @@ public class directorTest {
 		d4.setDirector_name("david");
 		assertEquals("david", d4.getDirector_name());
 	}
+	
 
 }
