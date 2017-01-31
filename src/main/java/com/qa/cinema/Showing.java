@@ -1,14 +1,21 @@
 package com.qa.cinema;
 
-
-
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import java.util.Calendar;
 
@@ -16,35 +23,42 @@ import java.util.Calendar;
 public class Showing {
 
 	@Id
-	@GeneratedValue
+	@Column (name="showing_id", nullable=false, unique=true)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int showingID;
-	
+
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@NotNull
-	private int filmID;
-	
+	@JoinColumn(name="film_id")
+	private Film film; //not sure 
+
 	@NotNull
+	@Column(name="showing_start_time")
 	private Date startTime;
-	
+
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@NotNull 
+	@JoinColumn(name="screen_id")
+	private Screen screen;
+
 	@NotNull
-	private int screenID;
-	
-	@NotNull
+	@Size(max=150)
+	@Column(name ="showing_language", length=150)
 	private String showingLanguage;
-	
 
+	Showing() {
+	}
 
-	Showing(){}
-	
-	Showing(int showingID, int filmID, Date startTime, int screenID, String showingLanguage){
+	Showing(int showingID, int filmID, Date startTime, int screenID,
+			String showingLanguage) {
 		setShowingID(showingID);
-		setFilmID(filmID);
+		setFilm(filmID);
 		setStartTime(startTime);
-		setScreenID(screenID);
+		setScreen(screenID);
 		setShowingLanguage(showingLanguage);
 		
 	}
-	
-	
+
 	public int getShowingID() {
 		return showingID;
 	}
@@ -53,12 +67,12 @@ public class Showing {
 		this.showingID = showingID;
 	}
 
-	public int getFilmID() {
-		return filmID;
+	public Film getFilm() {
+		return film;
 	}
 
-	public void setFilmID(int filmID) {
-		this.filmID = filmID;
+	public void setFilm(Film film) {
+		this.film = film;
 	}
 
 	public Date getStartTime() {
@@ -67,16 +81,14 @@ public class Showing {
 
 	public void setStartTime(Date startTime) {
 		this.startTime = startTime;
-		
 	}
 
-
-	public int getScreenID() {
-		return screenID;
+	public Screen getScreen() {
+		return screen;
 	}
 
-	public void setScreenID(int screenID) {
-		this.screenID = screenID;
+	public void setScreen(Screen screen) {
+		this.screen = screen;
 	}
 
 	public String getShowingLanguage() {
@@ -86,9 +98,5 @@ public class Showing {
 	public void setShowingLanguage(String showingLanguage) {
 		this.showingLanguage = showingLanguage;
 	}
-	
-
-	
-	
 	
 }
