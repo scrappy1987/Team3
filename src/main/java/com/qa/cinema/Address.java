@@ -3,6 +3,7 @@ package com.qa.cinema;
 import javax.persistence.*;
 
 // Author : Jack Roden
+// Date	  : 31/Jan/2017
 
 @Entity
 public class Address {
