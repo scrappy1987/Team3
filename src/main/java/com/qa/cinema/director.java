@@ -1,8 +1,10 @@
 package com.qa.cinema;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -12,6 +14,7 @@ public class director {
 	@GeneratedValue
 	private int directorID;
 	
+	@NotNull
 	@Column
 	protected String director_name;
 	
@@ -28,7 +31,7 @@ public class director {
 	}
 
 
-
+	
 	public void setDirectorID(int directorID) {
 		this.directorID = directorID;
 	}
