@@ -5,29 +5,34 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.persistence.ManyToMany;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="cin_cinema")
 public class Cinema {
 
 	@Id
-	@Column(name="cinema_id")
-	@GeneratedValue
+	@Column(name="cinema_id", nullable=false, unique=true)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="cinema_name", length=250)
+	@Column(name="cinema_name", nullable=false, length=250)
+	@Size(max=250)
 	@NotNull
 	private String name;
 	
 	@NotNull
 	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="address_id")
+	@JoinColumn(name="address_id", nullable=false)
 	private Address address;
 	
 	@NotNull
