@@ -41,7 +41,6 @@ public class Customer {
 	}
 
 
-	
 	//Getters and Setters
 	public int getCust_id() {
 		return cust_id;
