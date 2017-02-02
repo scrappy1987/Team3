@@ -1,5 +1,7 @@
 package com.qa.cinema.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,26 +15,27 @@ import javax.persistence.ManyToMany;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.OneToMany;
 
 @Entity
 @Table(name="cin_cinema")
 public class Cinema {
 
 	@Id
+	@NotNull
 	@Column(name="cinema_id", nullable=false, unique=true)
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="cinema_name", nullable=false, length=250)
+	@Column(name="cinema_name", length=250, nullable=false)
 	@Size(max=250)
 	@NotNull
 	private String name;
 	
 	@NotNull
 	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="address_id", nullable=false)
+	@JoinColumn(name="address_id")
 	private Address address;
 	
 	@NotNull
@@ -44,7 +47,7 @@ public class Cinema {
 	private List<Facility> facilities;
 	
 	@NotNull
-	@OneToMany(fetch=FetchType.LAZY, cascade={CascadeType.ALL})
+	@OneToMany(fetch=FetchType.LAZY)
 	@JoinColumn(name="screen_cinema_id")
 	private List<Screen> screens;
 	
