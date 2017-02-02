@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name="BOOKING")
+@Table(name="booking")
 public class Booking {
 	
 	//variables
