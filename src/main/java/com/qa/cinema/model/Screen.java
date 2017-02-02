@@ -2,6 +2,7 @@ package com.qa.cinema.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -27,30 +29,31 @@ public class Screen {
 	@NotNull
 	private int id;
 
-	@Column(name="screen_accessible", length=250)
+	@Column(name="screen_accessible", length=250, nullable=false)
+	@Size(max=250)
 	@NotNull
 	private String screenAccessibility;
 
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY, cascade={CascadeType.ALL})
 	@JoinColumn(name="screen_cinema_id", nullable=false)
 	@NotNull
 	private Cinema cinema;
 
-	@OneToOne(fetch=FetchType.LAZY)
+	@OneToOne(fetch=FetchType.LAZY, cascade={CascadeType.ALL})
 	@JoinColumn(name="screen_type_id", nullable=false)
 	@NotNull
 	private ScreenType screenType;
 
-	@OneToMany(mappedBy="screen")
+	@OneToMany(mappedBy="screen", cascade={CascadeType.ALL})
 	@NotNull
 	private List<Seat> seats;
 
 	public int getId() {
-		return Id;
+		return this.id;
 	}
 
 	public void setId(int id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getScreenAccessibility() {
@@ -62,7 +65,7 @@ public class Screen {
 	}
 
 	public Cinema getCinema() {
-		return cinema;
+		return this.cinema;
 	}
 
 	public void setCinema(Cinema cinema) {
@@ -70,7 +73,7 @@ public class Screen {
 	}
 
 	public ScreenType getScreenType() {
-		return screenType;
+		return this.screenType;
 	}
 
 	public void setScreenType(ScreenType screenType) {
@@ -78,7 +81,7 @@ public class Screen {
 	}
 
 	public List<Seat> getSeats() {
-		return seats;
+		return this.seats;
 	}
 
 	public void setSeats(List<Seat> seats) {
