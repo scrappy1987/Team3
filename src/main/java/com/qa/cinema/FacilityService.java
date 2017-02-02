@@ -14,8 +14,15 @@ public class FacilityService {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getTitle(){
-		String tmp = em.createQuery("SELECT f FROM f WHERE id = f.ID").toString();
+	public String getTitle(int ID){
+		String tmp = em.createQuery("SELECT facility_title FROM facility WHERE facility_id = '" + ID + "';").toString();
+		return tmp;
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getDescription(int ID){
+		String tmp = em.createQuery("SELECT facility_description FROM facility WHERE facility_id = '" + ID + "';").toString();
 		return tmp;
 	}
 }
