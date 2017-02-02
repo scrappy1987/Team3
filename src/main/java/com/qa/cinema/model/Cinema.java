@@ -19,7 +19,7 @@ import javax.persistence.Table;
 import javax.persistence.OneToMany;
 
 @Entity
-@Table(name="cin_cinema")
+@Table(name="cinema")
 public class Cinema {
 
 	@Id
