@@ -34,12 +34,12 @@ public class Cinema {
 	private String name;
 	
 	@NotNull
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="address_id")
+	@OneToOne(fetch=FetchType.LAZY, cascade={CascadeType.ALL})
+	@JoinColumn(name="address_id", nullable=false)
 	private Address address;
 	
 	@NotNull
-	@ManyToMany(fetch=FetchType.LAZY)
+	@ManyToMany(fetch=FetchType.LAZY, cascade={CascadeType.ALL})
 	@JoinTable(
 			name="cin_cinema_facilities_join",
 			joinColumns=@JoinColumn(name="join_cinema_id", referencedColumnName="cinema_id"),
@@ -47,8 +47,8 @@ public class Cinema {
 	private List<Facility> facilities;
 	
 	@NotNull
-	@OneToMany(fetch=FetchType.LAZY)
-	@JoinColumn(name="screen_cinema_id")
+	@OneToMany(fetch=FetchType.LAZY, cascade={CascadeType.ALL})
+	@JoinColumn(name="screen_cinema_id", nullable=false)
 	private List<Screen> screens;
 	
 	public Cinema() {
