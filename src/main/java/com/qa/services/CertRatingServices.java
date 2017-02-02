@@ -27,7 +27,7 @@ public class CertRatingServices {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<CertRating> listAll() {
-		final List<CertRating> cert_results = entitymanager.createQuery("SELECT * FROM CERT_RATING ORDER BY RATING_TITLE;").getResultList();
+		final List<CertRating> cert_results = entitymanager.createQuery("SELECT * FROM cert_rating ORDER BY rating_title;").getResultList();
 		return cert_results;
 	}
 	
@@ -43,7 +43,7 @@ public class CertRatingServices {
 		CertRating removedCert = gson.fromJson(removeCert, CertRating.class);
 		
 		//String title = removedCert.getRatingTitle();
-		//String removeCertString = gson.fromJson(entitymanager.createQuery("DELETE * FROM CERT_RATING WHERE RATING_TITLE = $
+		//String removeCertString = gson.fromJson(entitymanager.createQuery("DELETE * FROM cert_rating WHERE rating_title = :title;"));
 	}
 	
 }

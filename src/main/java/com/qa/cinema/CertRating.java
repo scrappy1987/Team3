@@ -14,17 +14,17 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="CERT_RATING")
+@Table(name="cert_rating")
 public class CertRating {
 
 	// variables
 	@Id
 	@NotNull
-	@Column(name="RATING_TITLE")
+	@Column(name="rating_title")
 	private String ratingTitle;
 	
 	@NotNull
-	@Column(name="RATING_DESCRIPTION")
+	@Column(name="rating_description")
 	private String ratingDescription;
 	
 	public CertRating() {
