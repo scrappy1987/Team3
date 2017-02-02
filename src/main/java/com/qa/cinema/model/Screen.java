@@ -18,14 +18,14 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name="cin_screen")
+@Table(name="screen")
 public class Screen {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="screen_id", unique=true, nullable=false)
 	@NotNull
-	private int Id;
+	private int id;
 
 	@Column(name="screen_accessible", length=250)
 	@NotNull
