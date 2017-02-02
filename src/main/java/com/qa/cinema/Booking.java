@@ -16,6 +16,10 @@ public class Booking {
 	
 	@NotNull
 	@Column(name="account_id")
+	@OneToOne(mappedBy = "account_id")
+	@JoinColumns({
+		@JoinColumn(name="account_id", referencedColumnName="account_id"),
+	})
 	private int account_id;
 	
 	@NotNull

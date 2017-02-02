@@ -16,26 +16,13 @@ import org.junit.Test;
 
 public class CertRatingTest {
 	
-	CertRating rate = new CertRating(1, "U", "Universal - suitable for all");
+	CertRating rate = new CertRating("U", "Universal - suitable for all");
 
 	@Test
 	public void testNewCertRating() {
 		
 	}
-	
-	
-	@Test
-	public void testGetRatingID() {
-		int holdID = rate.getRatingID();
-		assertEquals(1, holdID);
-	}
-	
-	
-	@Test
-	public void testSetRatingID() {
-		rate.setRatingID(2);
-		assertEquals(2, rate.getRatingID());
-	}
+
 	
 	
 	@Test
