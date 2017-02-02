@@ -1,5 +1,5 @@
 package com.qa.cinemaRest;
 
-public class AccountRest {
+public class BookingRest {
 
 }

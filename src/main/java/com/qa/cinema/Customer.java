@@ -28,6 +28,10 @@ public class Customer {
 	@NotNull
 	@Column(name="phone")
 	private long phoneNum;
+	
+	@NotNull
+	@Column(name="address_id")
+	private int address_id;
 
 	
 	public Customer(int cust_id, String firstName, String lastName,

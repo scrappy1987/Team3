@@ -10,6 +10,9 @@
  */
 package com.qa.cinema;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -27,32 +30,43 @@ public class CertRating {
 	@Column(name="rating_description")
 	private String ratingDescription;
 	
-	public CertRating() {
-	}
-	
-	public CertRating(String ratingTitle, String ratingDescription) {
+	@OneToMany
+	private Set<Film> films = new HashSet<>();
+
+	public CertRating(String ratingTitle, String ratingDescription,
+			Set<Film> films) {
+		super();
 		this.ratingTitle = ratingTitle;
 		this.ratingDescription = ratingDescription;
+		this.films = films;
 	}
-	
 
-	// getters and setters
+	
 	public String getRatingTitle() {
 		return ratingTitle;
 	}
-	
+
 	public void setRatingTitle(String ratingTitle) {
 		this.ratingTitle = ratingTitle;
 	}
-	
+
 	public String getRatingDescription() {
 		return ratingDescription;
 	}
-	 
+
 	public void setRatingDescription(String ratingDescription) {
 		this.ratingDescription = ratingDescription;
 	}
+
+	public Set<Film> getFilms() {
+		return films;
+	}
+
+	public void setFilms(Set<Film> films) {
+		this.films = films;
+	}
 	
+
 	
 	
 }
