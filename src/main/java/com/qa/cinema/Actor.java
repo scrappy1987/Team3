@@ -8,33 +8,34 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="Actor")
+@Table(name = "Actor")
 public class Actor {
-	
+
 	@Id
 	@GeneratedValue
-	protected long actor_id;
-	
+	@Column(name = "actorID")
+	protected long actorID;
+
 	@NotNull
-	@Column(name="actor_name", length=100)
+	@Column(name = "actor_name", length = 100)
 	protected String actor_name;
-	
+
 	public Actor(long actor_id, String actor_name) {
 		super();
-		this.actor_id = actor_id;
+		this.actorID = actor_id;
 		this.actor_name = actor_name;
 	}
 
 	public Actor() {
-		
+
 	}
 
 	public long getActor_id() {
-		return actor_id;
+		return actorID;
 	}
 
-	public void setActor_id(long actor_id) {
-		this.actor_id = actor_id;
+	public void setActor_id(long actorID) {
+		this.actorID = actorID;
 	}
 
 	public String getActor_name() {
@@ -47,11 +48,11 @@ public class Actor {
 
 	@Override
 	public String toString() {
-		return "Actor [actor_id=" + actor_id + ", actor_name=" + actor_name
+		return "Actor [actor_id=" + actorID + ", actor_name=" + actor_name
 				+ ", getActor_id()=" + getActor_id() + ", getActor_name()="
 				+ getActor_name() + ", getClass()=" + getClass()
 				+ ", hashCode()=" + hashCode() + ", toString()="
 				+ super.toString() + "]";
 	}
-	
+
 }
