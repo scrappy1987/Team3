@@ -27,4 +27,25 @@ public class BookingService {
 			"DELETE FROM Booking WHERE booking_id = '" + bookingID + "';"
 		);
 	}
+	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void updateBooking(String bookingID, Booking updatedBooking){
+		Booking tmp = (Booking)em.createQuery("SELECT * FROM Booking WHERE booking_id = '" + bookingID + "';").getSingleResult();
+		em.createQuery(
+			"UPDATE Booking SET booking_id = '" +
+				updatedBooking.getID() +
+				"' booking_account_id = '" +
+				updatedBooking.getAccountID() +
+				"' booking_complete = '" +
+				updatedBooking.isComplete() +
+				"' booking_customer_id ='" +
+				updatedBooking.getCustID() +
+				"' booking_paypal_id = '" +
+				updatedBooking.getPaypalOrderID() +
+				"' WHERE booking_id = '" +
+				bookingID +
+				"';"
+		);
+	}
 }
