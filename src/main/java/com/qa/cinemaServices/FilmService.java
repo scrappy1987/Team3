@@ -1,74 +1,85 @@
 package com.qa.cinemaServices;
 
+import java.util.List;
+
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import cinema.Film;
+import org.jboss.logging.Logger;
 
 import com.google.gson.Gson;
+import com.qa.cinema.Film;
 
 public class FilmService {
 
-	// ======================================
-	// = Attributes =
-	// ======================================
+	private static final Logger FILM_LOGGER = Logger.getLogger(Film.class);
 
+	@Inject
 	private EntityManager em;
 
-	// ======================================
-	// = Constructors =
-	// ======================================
+	@Inject
+	private Gson gsonParser;
 
-	public FilmService(EntityManager em) {
-		this.em = em;
+	public void createFilm(String jsonString) {
+		Film film = gsonParser.fromJson(jsonString, Film.class);
+		this.createFilm(film);
 	}
 
-	// ======================================
-	// = Public Methods =
-	// ======================================
-
-	public String getFilmsAsJSon() {
-		Gson gson = new Gson();
-		String filmsString = gson.toJson(em
-				.createQuery("SELECT * FROM cin_film ORDER BY Release_Date;"));
-		return filmsString;
-
-	}
-
-	public String createFilmFromJSon(String filmPostedFromClient) {
-		Gson gson = new Gson();
-		Film newFilm = gson.fromJson(filmPostedFromClient, Film.class);
-		em.persist(newFilm);
-		return "New Movie added";
-	}
-
-	public String updateFilmFromJSon(long filmID) {
-		Film filmToUpdate = em.find(Film.class, filmID);
-		Gson gson = new Gson();
-		Film updateFilm = gson.fromJson(filmUpdatedByClient, Film.class);
-		em.persist(updateFilm);
-		
-		
-		
-		if (em != null) {
-			
+	public void createFilm(Film film) {
+		Film checker = em.find(Film.class, film);
+		if (checker != null) {
+			FILM_LOGGER.info("Film already exists. Film not added");
+		} else {
+			em.persist(film);
+			FILM_LOGGER.info("Film added successfully");
 		}
-		return "Film Successfully Updated";
 	}
 
-	public void removeFilm(String deletedFilmFromClient) {
-		Gson gson = new Gson();
-		Film filmToBeDeleted = gson.fromJson(deletedFilmFromClient, Film.class);
-		filmToBeDeleted = em.find(Film.class, filmID);
-		if (filmToBeDeleted != null)
-			em.remove(filmToBeDeleted);
+	public Film getFilm(int ID) {
+		Film film = em.find(Film.class, ID);
+		if (film == null) {
+			FILM_LOGGER.info("ID doesn't macth existing Film");
+			return null;
+		} else {
+			return film;
+		}
 	}
 
-	public Film findFilm(Long filmID) {
-		return em.find(Film.class, filmID);
+	public List<Film> getAllFilms() {
+		@SuppressWarnings("unchecked")
+		List<Film> filmList = em.createQuery("SELECT f FROM Film f")
+				.getResultList();
+		return filmList;
 	}
 
-	public Film findFilm(String filmTitle) {
-		return em.find(Film.class, filmTitle);
+	public void removeFilm(String jsonString) {
+		Film film = gsonParser.fromJson(jsonString, Film.class);
+		removeFilm(film);
 	}
 
+	public void removeFilm(Film film) {
+		Film checker = em.find(Film.class, film);
+		if (checker == null) {
+			FILM_LOGGER.info("Film doesn't Exist");
+		} else {
+			em.remove(film);
+			FILM_LOGGER.info("Film removed Successfully");
+		}
+	}
+
+	public void updateFilm(String jsonString) {
+		Film film = gsonParser.fromJson(jsonString, Film.class);
+		updateScreen(film);
+	}
+
+	public void updateScreen(Film film) {
+		Film checker = em.find(Film.class, film);
+		if (checker == null) {
+			FILM_LOGGER.info("Screen doesn't exist");
+		} else {
+			em.merge(film);
+			FILM_LOGGER.info("Screen updated successfully");
+
+		}
+	}
 }
