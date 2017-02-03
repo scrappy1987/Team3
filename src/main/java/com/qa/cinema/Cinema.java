@@ -1,4 +1,4 @@
-package com.qa.cinema.model;
+package com.qa.cinema;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
