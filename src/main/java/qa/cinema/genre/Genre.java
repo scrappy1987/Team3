@@ -15,7 +15,8 @@ public class Genre {
 	@Id
 	@Column(name = "genre_id", nullable = false, unique = true)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int genre_id;
+	//@SequenceGenerator(name="Genre", sequenceName="GenreID", allocationSize = 1)
+	private int id;
 
 	@NotNull
 	@Size(max = 20)
@@ -23,21 +24,12 @@ public class Genre {
 	private String genre;
 
 
-	Genre() {
+	public Genre() {
 	}
 
-	Genre(int genre_id, String genre) {
-		setGenre_id(genre_id);
-		setGenre(genre);
+	public Genre(String genre) {
+		this.genre = genre;
 
-	}
-
-	public int getGenre_id() {
-		return genre_id;
-	}
-
-	public void setGenre_id(int genre_id) {
-		this.genre_id = genre_id;
 	}
 
 	public String getGenre() {
@@ -46,6 +38,14 @@ public class Genre {
 
 	public void setGenre(String genre) {
 		this.genre = genre;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }
