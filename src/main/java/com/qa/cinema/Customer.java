@@ -35,7 +35,7 @@ public class Customer {
 
 	
 	public Customer(int id, String fName, String lName,
-			String email, long phoneNum) {
+			String email, long phone) {
 		super();
 		this.id = id;
 		this.fName = fName;

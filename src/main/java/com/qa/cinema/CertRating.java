@@ -31,6 +31,7 @@ public class CertRating {
 	private String description;
 	
 	@OneToMany
+	//private Set<Film> films = new HashSet<Film>();
 	private Set<Film> films = new HashSet<>();
 
 	public CertRating(String title, String description,
@@ -58,7 +59,7 @@ public class CertRating {
 	}
 
 	public Set<Film> getFilms() {
-		return films;
+		return films.toString();
 	}
 
 	public void setFilms(Set<Film> films) {
@@ -66,6 +67,12 @@ public class CertRating {
 	}
 	
 
+	public String toString() {
+		for (Film films : film) {
+			System.out.println(film.getTitle() + " " + film.getDescription());
+		}
+	}
+	
 	
 	
 }

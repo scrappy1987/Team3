@@ -18,8 +18,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class CertRatingTest {
-	//Set<Film> films = new HashSet<>();
-	CertRating rate = new CertRating("U", "Universal - suitable for all");
+	Set<Film> films = new HashSet<>();
+	CertRating rate = new CertRating("U", "Universal - suitable for all", films);
 	
 	
 	@Test
@@ -55,5 +55,16 @@ public class CertRatingTest {
 		rate.setRatingDescription("12 - not suitable for anybody under 12");
 		assertEquals("12 - not suitable for anybody under 12", rate.getRatingDescription());
 	}
+	
+	
+	@Test
+	public void testSetFilms() {
+		
+	}
 
+	@Test
+	public void testGetFilms() {
+
+	}
+	
 }
