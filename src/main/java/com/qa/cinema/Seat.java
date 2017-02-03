@@ -1,5 +1,6 @@
 package com.qa.cinema;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,25 +23,25 @@ public class Seat {
 	@Id
 	@Column(name = "seat_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int seatID;
+	private int ID;
 
 	@NotNull
 	@Column(name = "ticket_id")
-	private String seatRow;
+	private String row;
 
 	@NotNull
 	@Column(name = "ticket_id")
-	private int seatNumber;
+	private int number;
 
 	@NotNull
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name = "seat_type_id", referencedColumnName = "type_id")
 	private int seatTypeID;
 
 	@NotNull
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name = "seat_screen_id", referencedColumnName = "screen_id")
-	private int seatScreenID;
+	private int ScreenID;
 
 	// ================================
 	// = Constructors =
@@ -50,42 +51,41 @@ public class Seat {
 		super();
 	}
 
-	public Seat(int seatID, String seatRow, int seatNumber, int seatTypeID,
-			int seatScreenID) {
+	public Seat(int iD, String row, int number, int seatTypeID, int screenID) {
 		super();
-		this.seatID = seatID;
-		this.seatRow = seatRow;
-		this.seatNumber = seatNumber;
+		ID = iD;
+		this.row = row;
+		this.number = number;
 		this.seatTypeID = seatTypeID;
-		this.seatScreenID = seatScreenID;
+		ScreenID = screenID;
 	}
-
+	
 	// ================================
 	// = Getters + Setters =
 	// ================================
-
-	public int getSeatID() {
-		return seatID;
+	
+	public int getID() {
+		return ID;
 	}
 
-	public void setSeatID(int seatID) {
-		this.seatID = seatID;
+	public void setID(int iD) {
+		ID = iD;
 	}
 
-	public String getSeatRow() {
-		return seatRow;
+	public String getRow() {
+		return row;
 	}
 
-	public void setSeatRow(String seatRow) {
-		this.seatRow = seatRow;
+	public void setRow(String row) {
+		this.row = row;
 	}
 
-	public int getSeatNumber() {
-		return seatNumber;
+	public int getNumber() {
+		return number;
 	}
 
-	public void setSeatNumber(int seatNumber) {
-		this.seatNumber = seatNumber;
+	public void setNumber(int number) {
+		this.number = number;
 	}
 
 	public int getSeatTypeID() {
@@ -96,12 +96,16 @@ public class Seat {
 		this.seatTypeID = seatTypeID;
 	}
 
-	public int getSeatScreenID() {
-		return seatScreenID;
+	public int getScreenID() {
+		return ScreenID;
 	}
 
-	public void setSeatScreenID(int seatScreenID) {
-		this.seatScreenID = seatScreenID;
+	public void setScreenID(int screenID) {
+		ScreenID = screenID;
 	}
 
+
+	
+
+	
 }

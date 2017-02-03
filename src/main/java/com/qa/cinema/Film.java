@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -30,47 +31,47 @@ public class Film {
 	// ================================
 
 	@Id
-	@Column(name = "Film_ID")
+	@Column(name = "film_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int filmID;
+	private int ID;
 
 	@NotNull
-	@Column(name = "Title", length = 64)
-	private String filmTitle;
+	@Column(name = "film_title", length = 64)
+	private String title;
 
-	@Column(name = "Summary", length = 256)
-	private String filmDescription;
+	@Column(name = "film_description", length = 256)
+	private String description;
 
-	@Column(name = "Approx._Running_Time")
-	private int filmDuration;
+	@Column(name = "film_duration")
+	private int duration;
 
 	@Column(name = "User_Rating")
 	private int userRating;
 
 	@Column(name = "Release_Date")
 	@Temporal(TemporalType.DATE)
-	private Date filmReleaseDate;
+	private Date releaseDate;
 	
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "Age_Rating", referencedColumnName = "rating_title")
+	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name = "film_cert_rating", referencedColumnName = "cert_rating_title")
 	private CertRating certRating;
 	
 	@ManyToMany
-	@JoinTable(name = "Film_Genres", 
-		joinColumns = @JoinColumn(name = "Film_ID", referencedColumnName = "film_id"), 
-		inverseJoinColumns = @JoinColumn(name = "Genre_ID", referencedColumnName = "genre_id"))
+	@JoinTable(name = "cin_film_Genre_join", 
+		joinColumns = @JoinColumn(name = "join_film_id", referencedColumnName = "film_id"), 
+		inverseJoinColumns = @JoinColumn(name = "join_genre_id", referencedColumnName = "genre_id"))
 	private Set<Genre> genres = new HashSet<>();;
 	
 	@ManyToMany
-	@JoinTable(name = "Film_Actors", 
-		joinColumns = @JoinColumn(name = "Film_ID", referencedColumnName = "film_id"), 
-		inverseJoinColumns = @JoinColumn(name = "Actor_ID", referencedColumnName = "actor_id"))
+	@JoinTable(name = "cin_film_actor_join", 
+		joinColumns = @JoinColumn(name = "join_film_id", referencedColumnName = "film_id"), 
+		inverseJoinColumns = @JoinColumn(name = "join_actor_id", referencedColumnName = "actor_id"))
 	private Set<Actor> actors = new HashSet<>();;
 	
 	@ManyToMany
-	@JoinTable(name = "Film_Director", 
-		joinColumns = @JoinColumn(name = "Film_ID", referencedColumnName = "film_id"), 
-		inverseJoinColumns = @JoinColumn(name = "Director_ID", referencedColumnName = "director_id"))
+	@JoinTable(name = "cin_film_director_join", 
+		joinColumns = @JoinColumn(name = "join_film_id", referencedColumnName = "film_id"), 
+		inverseJoinColumns = @JoinColumn(name = "join_director_id", referencedColumnName = "director_id"))
 	private Set<Director> directors = new HashSet<>();;
 	
 	@OneToMany
@@ -85,15 +86,15 @@ public class Film {
 
 	public Film(String filmTitle, String filmDescription) {
 		super();
-		this.filmTitle = filmTitle;
-		this.filmDescription = filmDescription;
+		this.title = filmTitle;
+		this.description = filmDescription;
 	}
 	
 	public Film(String filmTitle, String filmDescription, Date filmReleaseDate) {
 		super();
-		this.filmTitle = filmTitle;
-		this.filmDescription = filmDescription;
-		this.filmReleaseDate = filmReleaseDate;
+		this.title = filmTitle;
+		this.description = filmDescription;
+		this.releaseDate = filmReleaseDate;
 	}
 
 	public Film(String filmTitle, String filmDescription,
@@ -101,11 +102,11 @@ public class Film {
 			CertRating certRating, Set<Genre> genres, Set<Actor> actors,
 			Set<Director> directors, Set<Showing> showings) {
 		
-		this.filmTitle = filmTitle;
-		this.filmDescription = filmDescription;
-		this.filmDuration = filmDuration;
+		this.title = filmTitle;
+		this.description = filmDescription;
+		this.duration = filmDuration;
 		this.userRating = userRating;
-		this.filmReleaseDate = filmReleaseDate;
+		this.releaseDate = filmReleaseDate;
 		this.certRating = certRating;
 		this.genres = genres;
 		this.actors = actors;
@@ -118,35 +119,35 @@ public class Film {
 	// ================================
 	
 	public int getFilmID() {
-		return filmID;
+		return ID;
 	}
 
 	public void setFilmID(int filmID) {
-		this.filmID = filmID;
+		this.ID = filmID;
 	}
 
 	public String getFilmTitle() {
-		return filmTitle;
+		return title;
 	}
 
 	public void setFilmTitle(String filmTitle) {
-		this.filmTitle = filmTitle;
+		this.title = filmTitle;
 	}
 
 	public String getFilmDescription() {
-		return filmDescription;
+		return description;
 	}
 
 	public void setFilmDescription(String filmDescription) {
-		this.filmDescription = filmDescription;
+		this.description = filmDescription;
 	}
 
 	public int getFilmDuration() {
-		return filmDuration;
+		return duration;
 	}
 
 	public void setFilmDuration(int filmDuration) {
-		this.filmDuration = filmDuration;
+		this.duration = filmDuration;
 	}
 
 	public int getUserRating() {
@@ -158,11 +159,11 @@ public class Film {
 	}
 
 	public Date getFilmReleaseDate() {
-		return filmReleaseDate;
+		return releaseDate;
 	}
 
 	public void setFilmReleaseDate(Date filmReleaseDate) {
-		this.filmReleaseDate = filmReleaseDate;
+		this.releaseDate = filmReleaseDate;
 	}
 
 	public CertRating getCertRating() {

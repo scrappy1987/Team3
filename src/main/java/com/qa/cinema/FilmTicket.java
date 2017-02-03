@@ -1,5 +1,6 @@
 package com.qa.cinema;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,21 +23,19 @@ public class FilmTicket {
 	@Id
 	@Column(name = "ticket_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int ticketID;
+	private int ID;
 	
 	@NotNull
-	@OneToOne(fetch=FetchType.LAZY)
+	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name = "ticket_booking_id", referencedColumnName = "booking_id")
 	private int bookingID;
 
 	@NotNull
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "showing", referencedColumnName = "showing_id")
+	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private Showing showing;
 	
 	@NotNull
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "seat", referencedColumnName = "seat_id")
+	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private Seat seat;
 
 	// ================================
@@ -49,7 +48,7 @@ public class FilmTicket {
 
 	public FilmTicket(int ticketID, int bookingID, Showing showing, Seat seat) {
 		super();
-		this.ticketID = ticketID;
+		this.ID = ticketID;
 		this.bookingID = bookingID;
 		this.showing = showing;
 		this.seat = seat;
@@ -60,11 +59,11 @@ public class FilmTicket {
 	// ================================
 	
 	public int getTicketID() {
-		return ticketID;
+		return ID;
 	}
 
 	public void setTicketID(int ticketID) {
-		this.ticketID = ticketID;
+		this.ID = ticketID;
 	}
 
 	public int getBookingID() {
