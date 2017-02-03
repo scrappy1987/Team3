@@ -8,6 +8,9 @@
  */
 
 package com.qa.cinemaTest;
+import java.util.HashSet;
+import java.util.Set;
+
 import com.qa.cinema.*;
 
 import static org.junit.Assert.*;
@@ -15,9 +18,10 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class CertRatingTest {
-	
+	//Set<Film> films = new HashSet<>();
 	CertRating rate = new CertRating("U", "Universal - suitable for all");
-
+	
+	
 	@Test
 	public void testNewCertRating() {
 		

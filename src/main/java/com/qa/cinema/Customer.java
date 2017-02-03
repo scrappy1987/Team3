@@ -4,22 +4,22 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="customer")
+@Table(name="cin_customer")
 public class Customer {
 	
 	//variables
 	@Id
 	@NotNull
-	@Column(name="cust_id")
-	private int cust_id;
+	@Column(name="id")
+	private int id;
 
 	@NotNull
 	@Column(name="fName")
-	private String firstName;
+	private String fName;
 	
 	@NotNull
 	@Column(name="lName")
-	private String lastName;
+	private String lName;
 	
 	@NotNull
 	@Column(name="email")
@@ -27,52 +27,52 @@ public class Customer {
 	
 	@NotNull
 	@Column(name="phone")
-	private long phoneNum;
+	private long phone;
 	
 	@NotNull
 	@Column(name="address_id")
 	private int address_id;
 
 	
-	public Customer(int cust_id, String firstName, String lastName,
+	public Customer(int id, String fName, String lName,
 			String email, long phoneNum) {
 		super();
-		this.cust_id = cust_id;
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.id = id;
+		this.fName = fName;
+		this.lName = lName;
 		this.email = email;
-		this.phoneNum = phoneNum;
+		this.phone = phone;
 	}
 
 
 	//Getters and Setters
 	public int getCust_id() {
-		return cust_id;
+		return id;
 	}
 
 
-	public void setCust_id(int cust_id) {
-		this.cust_id = cust_id;
+	public void setCust_id(int id) {
+		this.id = id;
 	}
 
 
 	public String getFirstName() {
-		return firstName;
+		return fName;
 	}
 
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirstName(String fName) {
+		this.fName = fName;
 	}
 
 
 	public String getLastName() {
-		return lastName;
+		return lName;
 	}
 
 
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		this.lName = lastName;
 	}
 
 
@@ -87,12 +87,12 @@ public class Customer {
 
 
 	public long getPhoneNum() {
-		return phoneNum;
+		return phone;
 	}
 
 
-	public void setPhoneNum(long phoneNum) {
-		this.phoneNum = phoneNum;
+	public void setPhoneNum(long phone) {
+		this.phone = phone;
 	}
 
 	

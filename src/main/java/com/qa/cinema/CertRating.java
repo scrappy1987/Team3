@@ -17,45 +17,44 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="cert_rating")
+@Table(name="cin_cert_rating")
 public class CertRating {
 
 	// variables
 	@Id
 	@NotNull
-	@Column(name="rating_title")
-	private String ratingTitle;
+	@Column(name="title")
+	private String title;
 	
 	@NotNull
 	@Column(name="rating_description")
-	private String ratingDescription;
+	private String description;
 	
 	@OneToMany
 	private Set<Film> films = new HashSet<>();
 
-	public CertRating(String ratingTitle, String ratingDescription,
+	public CertRating(String title, String description,
 			Set<Film> films) {
-		super();
-		this.ratingTitle = ratingTitle;
-		this.ratingDescription = ratingDescription;
+		this.title = title;
+		this.description = description;
 		this.films = films;
 	}
 
 	
 	public String getRatingTitle() {
-		return ratingTitle;
+		return title;
 	}
 
 	public void setRatingTitle(String ratingTitle) {
-		this.ratingTitle = ratingTitle;
+		this.title = ratingTitle;
 	}
 
 	public String getRatingDescription() {
-		return ratingDescription;
+		return description;
 	}
 
 	public void setRatingDescription(String ratingDescription) {
-		this.ratingDescription = ratingDescription;
+		this.description = ratingDescription;
 	}
 
 	public Set<Film> getFilms() {

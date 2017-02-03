@@ -5,22 +5,23 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name="booking")
+@Table(name="cin_booking")
 public class Booking {
 	
 	//variables
 	@Id
 	@NotNull
-	@Column(name="booking_id")
-	private int booking_id;
+	@Column(name="ID")
+	private int ID;
 	
+	//ASK DUNCAN TOMORROW
 	@NotNull
 	@Column(name="account_id")
 	private int account_id;
 	
 	@NotNull
-	@Column(name="booking_complete")
-	private boolean booking_complete;
+	@Column(name="complete")
+	private boolean complete;
 	
 	@NotNull
 	@Column(name="cust_id")
@@ -37,12 +38,11 @@ public class Booking {
 	
 	
 	//Constructors
-	public Booking(int booking_id, int account_id, boolean booking_complete,
+	public Booking(int ID, int account_id, boolean complete,
 			int cust_id, String paypal_order_id) {
-		super();
-		this.booking_id = booking_id;
+		this.ID = ID;
 		this.account_id = account_id;
-		this.booking_complete = booking_complete;
+		this.complete = complete;
 		this.cust_id = cust_id;
 		this.paypal_order_id = paypal_order_id;
 	}
@@ -50,13 +50,13 @@ public class Booking {
 
 
 	//Getters and Setters
-	public int getBooking_id() {
-		return booking_id;
+	public int getID() {
+		return ID;
 	}
 
 
-	public void setBooking_id(int booking_id) {
-		this.booking_id = booking_id;
+	public void setID(int ID) {
+		this.ID = ID;
 	}
 
 
@@ -70,13 +70,13 @@ public class Booking {
 	}
 
 
-	public boolean isBooking_complete() {
-		return booking_complete;
+	public boolean isComplete() {
+		return complete;
 	}
 
 
-	public void setBooking_complete(boolean booking_complete) {
-		this.booking_complete = booking_complete;
+	public void setComplete(boolean complete) {
+		this.complete = complete;
 	}
 
 
