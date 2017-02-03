@@ -1,17 +1,17 @@
 package com.qa.cinema;
 
-import java.util.HashMap;
+//import java.util.HashMap;
 import com.qa.cinema.Actor;
-import java.util.Map;
-import javax.persistence.*;
+//import java.util.Map;
+//import javax.persistence.*;
 import javax.persistence.EntityManager;
 import com.google.gson.Gson;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 
 public class ActorService {
 	
-	private static final Logger LOGGER = Logger.getLogger(ActorService.class);
+	//private static final Logger LOGGER = Logger.getLogger(ActorService.class);
 	
 	//private Map<Integer,Actor> actorMap;
 	private EntityManager em;
@@ -20,10 +20,24 @@ public class ActorService {
 		this.em = em;
 	}
 	
+	public ActorService() {
+		
+	}
+	
 	public String getActorAsJSon() {
 		Gson gson = new Gson();
-		String actorString = gson.toJson(em.createQuery("SELECT * FROM Actor"));
+		Actor obj = createDummyObject();
+		String actorString = gson.toJson(obj);
 		return actorString;
+	}
+	
+	private static Actor createDummyObject() {
+		Actor actor = new Actor();
+		
+		actor.setActor_id(1);
+		actor.setActor_name("Daniel Craig");
+		
+		return actor;
 	}
 	
 	public String createActorFromJson(String actorpostedbyclient) {
@@ -31,9 +45,17 @@ public class ActorService {
 		Actor newActor = gson.fromJson(actorpostedbyclient,Actor.class);
 		em.persist(newActor);
 		return "New Movie Added.";
+}
+}
+/*	
+	public String createActorFromJson(String actorpostedbyclient) {
+		Gson gson = new Gson();
+		Actor newActor = gson.fromJson(actorpostedbyclient,Actor.class);
+		em.persist(newActor);
+		return "New Movie Added.";
 	}
 	
-/*public String updateActorfromJSon(long actor_id){
+public String updateActorfromJSon(long actor_id){
 		Actor actortoupdate = em.find(Actor.class,actor_id);
 		Gson gson = new Gson();
 		Actor updateActor = gson.fromJson(actorupdatedbyClient,Actor.class);
@@ -43,7 +65,7 @@ public class ActorService {
 			
 		}
 		return "actor Successfully updated.";
-	}*/
+	}
 	
 	public void removeActor(String deletedActorfromclient) {
 		Gson gson = new Gson();
@@ -59,7 +81,7 @@ public class ActorService {
 	
 	public Actor findActor(String actorName) {
 		return em.find(Actor.class, actorName);
-	}
+	}*/
 	
 	
 /*	public ActorService() {
@@ -106,4 +128,4 @@ public class ActorService {
 	/*public Actor findActor(long actor_id) {
 		return em.find(Actor.class,actor_id);
 	}*/
-}
+

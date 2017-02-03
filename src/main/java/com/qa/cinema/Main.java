@@ -5,7 +5,8 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 ActorService a = new ActorService();
-//a.covertActortoJSon();
+a.getActorAsJSon();
+a.createActorFromJson("Daniel John");
 
 	}
 

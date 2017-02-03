@@ -1,7 +1,7 @@
 package com.qa.cinema;
 
 import static org.junit.Assert.*;
-
+import com.qa.cinema.Actor;
 import org.junit.Test;
 
 public class ActorTest {

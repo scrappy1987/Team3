@@ -28,20 +28,20 @@ public class ActorRest {
 		actorService.createActorFromJson(actor);
 		return "Actor added";
 	}
-	
-/*	@POST
+	/*
+	@POST
 	@Path("/json")
 	@Produces({"application/json"})
 	public String updateActor(String actorupdatebyclient,int actorID) {
 		actorService.updateActorfromJSon(actorupdatebyclient,actorID);
 		return "actor updated";
-	}*/
+	}
 	
 	@POST
 	@Path("/json")
 	@Produces({"application/json"})
 	public String deleteActor(String deletedActorFromClient) {
 		actorService.removeActor(deletedActorFromClient);
-		return "Actor deleted";
+		return "Actor deleted";*/
 	}
-}
+

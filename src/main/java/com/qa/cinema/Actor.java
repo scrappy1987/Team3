@@ -2,7 +2,7 @@ package com.qa.cinema;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+//import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 public class Actor {
 
 	@Id
-	@GeneratedValue
+	//@GeneratedValue
 	@Column(name = "actorID")
 	protected long actorID;
 
