@@ -20,7 +20,7 @@ public class AddressService {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addAddress(Address newAddress){
-		em.createQuery("INSERT INTO Address(address_line1, address_line2, address_county, address_country, address_postCode) VALUES(newAddress.line1, newAddress.line2, newAddress.county, newAddress.country, newAddress.postCode);");
+		em.createQuery("INSERT INTO Address(address_line1, address_line2, address_county, address_country, address_postCode) VALUES("+newAddress.line1+", "+newAddress.line2+", "+newAddress.county+", "+newAddress.country+", "+newAddress.postCode+");");
 	}
 	
 	@POST
