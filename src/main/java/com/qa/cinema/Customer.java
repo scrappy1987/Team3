@@ -50,7 +50,6 @@ public class Customer {
 
 
 	//Getters and Setters
-	public int 
 	public int getCust_id() {
 		return id;
 	}
