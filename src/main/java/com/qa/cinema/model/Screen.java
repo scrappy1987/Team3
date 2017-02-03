@@ -27,7 +27,7 @@ public class Screen {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="screen_id", unique=true, nullable=false)
 	@NotNull
-	private int id;
+	private int ID;
 
 	@Column(name="screen_accessible", length=250, nullable=false)
 	@Size(max=250)
@@ -48,12 +48,12 @@ public class Screen {
 	@NotNull
 	private List<Seat> seats;
 
-	public int getId() {
-		return this.id;
+	public int getID() {
+		return this.ID;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int ID) {
+		this.ID = ID;
 	}
 
 	public String getScreenAccessibility() {
