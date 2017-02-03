@@ -18,7 +18,10 @@ public class BookingServices {
 	@Inject
 	private EntityManager em;
 	
-	
+	public void createBooking(String aBooking) {
+		Gson gson = new Gson();
+		
+	}
 	
 	
 }

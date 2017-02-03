@@ -13,8 +13,7 @@ public class Booking {
 	@NotNull
 	@Column(name="ID")
 	private int ID;
-	
-	//ASK DUNCAN TOMORROW
+
 	@NotNull
 	@Column(name="account_id")
 	private int account_id;
