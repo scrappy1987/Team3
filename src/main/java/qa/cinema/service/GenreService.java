@@ -32,8 +32,6 @@ public class GenreService {
 	}
 
 	public void addGenre(){
-		//Genre newGenre = new Genre("Horror");
-		//em.persist(newGenre);
 		em.createQuery("INSERT into Genre(genre) values('Horror')");
 		
 		
