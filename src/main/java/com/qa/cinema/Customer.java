@@ -1,11 +1,16 @@
 package com.qa.cinema;
 
+
+import java.util.*;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="cin_customer")
 public class Customer {
+	
+	
 	
 	//variables
 	@Id
@@ -36,7 +41,6 @@ public class Customer {
 	
 	public Customer(int id, String fName, String lName,
 			String email, long phone) {
-		super();
 		this.id = id;
 		this.fName = fName;
 		this.lName = lName;
@@ -46,6 +50,7 @@ public class Customer {
 
 
 	//Getters and Setters
+	public int 
 	public int getCust_id() {
 		return id;
 	}
