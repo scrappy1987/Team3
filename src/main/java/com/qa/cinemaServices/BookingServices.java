@@ -1,4 +1,4 @@
-package com.qa.services;
+package com.qa.cinemaServices;
 
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
@@ -17,5 +17,8 @@ public class BookingServices {
 	
 	@Inject
 	private EntityManager em;
+	
+	
+	
 	
 }

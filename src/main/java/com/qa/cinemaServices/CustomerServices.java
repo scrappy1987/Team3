@@ -1,4 +1,4 @@
-package com.qa.services;
+package com.qa.cinemaServices;
 
 public class CustomerServices {
 

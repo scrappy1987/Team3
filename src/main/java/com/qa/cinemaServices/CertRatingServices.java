@@ -1,4 +1,4 @@
-package com.qa.services;
+package com.qa.cinemaServices;
 
 import java.util.List;
 import com.sun.istack.internal.logging.Logger;
@@ -41,9 +41,8 @@ public class CertRatingServices {
 	public void deleteCert(String removeCert) {
 		Gson gson = new Gson();
 		CertRating removedCert = gson.fromJson(removeCert, CertRating.class);
-		
-		//String title = removedCert.getRatingTitle();
-		//String removeCertString = gson.fromJson(entitymanager.createQuery("DELETE * FROM cert_rating WHERE rating_title = :title;"));
+		String title = removedCert.getRatingTitle();
+		String removeCertString = gson.toJson(entitymanager.createQuery("DELETE * FROM cert_rating WHERE rating_title = :title;"));
 	}
 	
 }
