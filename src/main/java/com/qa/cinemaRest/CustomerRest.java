@@ -16,13 +16,15 @@ public class CustomerRest {
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getCustomers() {
-		//String customers = customerService.listAll();
-		//return customers;
 		return "{\" results : \":\"" + customerService.listAllCustomers() + "\"}";
 	}
 	
 	@GET
 	@Path("/{title}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String addCustomer() {
+		return "{\" results : \":\"" + customerService.createCustomer();
+	}
 	
 	
 }
