@@ -2,8 +2,9 @@ package com.qa.cinemaServices;
 
 import javax.persistence.EntityManager;
 
+import cinema.Film;
+
 import com.google.gson.Gson;
-import com.qa.cinema.Film;
 
 public class FilmService {
 
