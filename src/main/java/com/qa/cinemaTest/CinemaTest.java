@@ -1,4 +1,4 @@
-package com.qa.cinema.test;
+package com.qa.cinemaTest;
 
 import static org.junit.Assert.*;
 
